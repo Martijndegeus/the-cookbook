@@ -2,7 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
+use App\Models\Ingredient;
+use App\Models\Recipe;
+use Filament\Facades\Filament;
+use Filament\Models\User;
+
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -15,9 +19,14 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+        Filament::auth()->getProvider()->getModel()::create([
+            'name'     => 'Martijn',
+            'email'    => 'martijnjgeus@gmail.com',
+            'password' => bcrypt('password'),
         ]);
+
+        Recipe::factory(20)
+            ->has(Ingredient::factory(5))
+            ->create();
     }
 }
