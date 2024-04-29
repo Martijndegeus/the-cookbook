@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Recipe;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,10 +14,11 @@ return new class extends Migration
     {
         Schema::create('steps', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
             $table->integer('duration')->nullable();
-            $table->string('unit')->nullable();
-            $table->integer('order');
+            $table->integer('order')->default(0);
             $table->text('action');
+            $table->foreignIdFor(Recipe::class);
             $table->timestamps();
         });
     }

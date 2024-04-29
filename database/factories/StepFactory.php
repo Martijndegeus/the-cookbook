@@ -18,8 +18,8 @@ class StepFactory extends Factory
     public function definition(): array
     {
         return [
+            'name'     => $this->faker->words(2, true),
             'duration' => $this->faker->numberBetween(1, 30),
-            'unit'     => $this->faker->randomElement(['second', 'minute', 'hour', null]),
             'order'    => $this->faker->numberBetween(0, 30),
             'action'   => $this->faker->text(),
         ];

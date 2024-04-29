@@ -7,7 +7,7 @@ use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class IngredientsRelationManager extends RelationManager
@@ -64,6 +64,18 @@ class IngredientsRelationManager extends RelationManager
             ])
             ->headerActions([
                 Tables\Actions\CreateAction::make(),
+//                    ->mutateFormDataUsing(function (array $data): array {
+//                        dd($data);
+//                        return $data;
+//                    }),
+//                    ->using(function (array $data, string $model): Model {
+//                        return $model::create($data);
+////                        return $persistedModel;
+//                    }),
+//                    ->mutateFormDataUsing(function (array $data): array {
+//                        dd($data);
+//                        return $data;
+//                    }),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),

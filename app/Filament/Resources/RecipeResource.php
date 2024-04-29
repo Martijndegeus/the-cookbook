@@ -23,10 +23,15 @@ class RecipeResource extends Resource
     {
         return $form
             ->schema([
+
                 Forms\Components\TextInput::make('name')
                     ->required(),
+                Forms\Components\TextInput::make('number_of_people')
+                    ->required()
+                    ->default(1),
                 Forms\Components\RichEditor::make('description')
-                    ->nullable(),
+                    ->nullable()
+                    ->columnSpan(2),
             ]);
     }
 
@@ -34,7 +39,8 @@ class RecipeResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name'),
+                Tables\Columns\TextColumn::make('name')
+                    ->searchable(),
             ])
             ->filters([
                 //
@@ -54,6 +60,7 @@ class RecipeResource extends Resource
     {
         return [
             RelationManagers\IngredientsRelationManager::class,
+            RelationManagers\StepsRelationManager::class,
         ];
     }
 

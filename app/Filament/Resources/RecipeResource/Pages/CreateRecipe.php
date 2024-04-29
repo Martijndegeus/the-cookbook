@@ -9,4 +9,6 @@ use Filament\Resources\Pages\CreateRecord;
 class CreateRecipe extends CreateRecord
 {
     protected static string $resource = RecipeResource::class;
+
+
 }

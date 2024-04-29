@@ -10,6 +10,12 @@ class EditRecipe extends EditRecord
 {
     protected static string $resource = RecipeResource::class;
 
+    protected function mutateFormDataBeforeSave(array $data): array
+    {
+//        dd($data);
+        return $data;
+    }
+
     protected function getHeaderActions(): array
     {
         return [

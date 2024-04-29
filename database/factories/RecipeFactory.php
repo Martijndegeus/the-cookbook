@@ -18,8 +18,9 @@ class RecipeFactory extends Factory
     public function definition(): array
     {
         return [
-            'name'        => $this->faker->words(2, true),
-            'description' => $this->faker->text(),
+            'name'             => $this->faker->words(2, true),
+            'description'      => $this->faker->text(),
+            'number_of_people' => $this->faker->randomElement([1, 2, 3, 4, 5, 6]),
         ];
     }
 }
